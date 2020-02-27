@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/stephen.jang/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -223,9 +223,9 @@ function glf() { git log --all --grep="$1"; }
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
-export PATH="$PATH:/Users/stephen.jang/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 export GITHUB_TOKEN="6a8c26c517a1e0f32919ad6a9bb8dd124c9a03d2"
-export PATH="/Users/stephen.jang/Library/Python/3.8/bin:$PATH"
+export PATH="$HOME/Library/Python/3.8/bin:$PATH"
 
 # Initialise zulu plugin manager
 source "${ZULU_DIR:-"${ZDOTDIR:-$HOME}/.zulu"}/core/zulu"
