@@ -170,13 +170,6 @@ bindkey '^e' edit-command-line
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
-# ALIASES
-export WORKSPACE='~/workspace'
-alias ws="cd $WORKSPACE"
-alias level="cd $WORKSPACE/levelup-dna-atl"
-alias tfk="cd $WORKSPACE/terraform-kafka-fargate"
-alias tfkr=" cd $WORKSPACE/terraform_ecs_fargate_example"
-
 # ----------------------
 # Git Aliases
 # ----------------------
@@ -224,7 +217,6 @@ function glf() { git log --all --grep="$1"; }
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 export PATH="$PATH:$HOME/.local/bin"
-export GITHUB_TOKEN="6a8c26c517a1e0f32919ad6a9bb8dd124c9a03d2"
 export PATH="$HOME/Library/Python/3.8/bin:$PATH"
 
 # Initialise zulu plugin manager
@@ -234,3 +226,7 @@ zulu init
 export TG_BUCKET_PREFIX="sjtfk"
 alias chrome="open -a 'Google Chrome'"
 alias tfg="echo 'generating graph from terrafrom..' | terraform graph | dot -Tsvg > graph.svg | echo 'graph generated'"
+
+setopt rm_star_silent
+
+function catall() { cat $1  | tr " " "*" | tr "\t" "&" }

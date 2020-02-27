@@ -1,7 +1,15 @@
 #!/bin/bash
 
+init() {
+  chmod +x ./$1/init.sh && ./$1/init.sh
+}
+
+
 # install brew
-chmod +x ./homebrew/init.sh && ./homebrew/init.sh
+init homebrew
 
 # install zsh
-chmod +x ./zsh/init.sh && ./zsh/init.sh
+init zsh
+
+# install vimrc
+init vim
