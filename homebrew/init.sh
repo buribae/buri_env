@@ -1,11 +1,12 @@
 #!/bin/bash
+. $BURI_UTIL
 
 # Install brew
-if ! hash brew 2>/dev/null; then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
+if ! cmd_exists 'brew'; then
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" && e_success "Installed HomeBrew."
 fi
 
-# Install brew bundle 
+# Install brew bundle
 brew tap Homebrew/bundle
 
 brew update

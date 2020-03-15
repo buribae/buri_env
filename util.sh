@@ -1,20 +1,5 @@
 #!/bin/zsh
 
-usage () {
-  e_header "usage"
-  if [ $2 ]; then
-    e_arrow "$0 [command] [services]"
-    e_arrow "commands:"
-    e_arrow "\t $1"
-    e_arrow "services:"
-    e_arrow "\t $2"
-  else
-    e_arrow "$0 [command] [parameters]"
-    e_arrow "commands:"
-    e_arrow "\t $1"
-  fi
-}
-
 errexit () {
   e_error "$@"
   exit 1
@@ -95,22 +80,18 @@ fi
 return 1
 }
 
-#
-# Test whether a command exists
-# $1 = cmd to test
-# Usage:
-# if type_exists 'git'; then
-#   some action
-# else
-#   some other action
-# fi
-#
-
-type_exists() {
-if [ $(type -P $1) ]; then
-  return 0
+cmd_exists() {
+if [[ $(type -p $1 | grep -q $1) ]]; then
+  return 1
 fi
-return 1
+return 0
+}
+
+dir_exists() {
+if [ -d "$1" ]; then
+  return 1
+fi
+return 0
 }
 
 #
@@ -124,4 +105,8 @@ if [[ "${OSTYPE}" == $1* ]]; then
   return 0
 fi
 return 1
+}
+
+init() {
+  chmod +x ./$1/init.sh && ./$1/init.sh
 }

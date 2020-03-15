@@ -1,9 +1,11 @@
 # !/bin/bash
+. $BURI_UTIL
 
-# install oh my zsh
-if ! hash zsh 2>/dev/null; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# Install NerdTree
+if ! dir_exists "~/.vim/pack/vendor/start/nerdtree"; then
+    git clone https://github.com/preservim/nerdtree.git ~/.vim/pack/vendor/start/nerdtree
+    vim -u NONE -c "helptags ~/.vim/pack/vendor/start/nerdtree/doc" -c q && e_success "Installed NerdTree plugin for Vim."
 fi
 
-# copy zshrc
-cp ./zsh/zshrc ~/.zshrc
+# Copy vimrc
+cp ./vim/vimrc ~/.vimrc && e_success "Installed custom vimrc."
